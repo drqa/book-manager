@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2>Submit New Book</h2>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                {{ form.title.label }}
+
+                {% if form.title.errors %}
+                    {{ form.title(class="is_invalid") }}
+                        {% for error in form.title.errors %}
+                         <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.title(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.author.label }}
+
+                {% if form.author.errors %}
+                    {{ form.author(class="is_invalid") }}
+                        {% for error in form.author.errors %}
+                         <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.author(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.isbn.label }}
+
+                {% if form.isbn.errors %}
+                    {{ form.isbn(class="is_invalid") }}
+                        {% for error in form.isbn.errors %}
+                         <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.isbn(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.pub_year.label }}
+
+                {% if form.pub_year.errors %}
+                    {{ form.pub_year(class="is_invalid") }}
+                        {% for error in form.pub_year.errors %}
+                         <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.pub_year(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.original_lang.label }}
+
+                {% if form.original_lang.errors %}
+                    {{ form.original_lang(class="is_invalid") }}
+                        {% for error in form.original_lang.errors %}
+                         <span class="form-text text-danger">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.original_lang(class="form-control") }}
+                {% endif %}
+            </div>
+            <br></br>
+        </fieldset>
+            <div>
+                {{ form.submit(class="btn btn-dark") }}
+            </div>
+        </form>
+        <br></br>
+        <h5>Books In Database </h5>
+        {% for book in books %}
+
+            <p>{{ book.title }} by {{ book.author }}</p>
+        
+        {% endfor %}
+    </div>
+    </div>
+{% endblock content %}
