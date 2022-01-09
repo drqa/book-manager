@@ -6,10 +6,13 @@
     <br>
     <a href="{{ url_for('create_shelf') }}">Create a new shelf</a>
 
+    <br></br>
+
     {% for shelf in shelves %}
 
-    <h4><a class="article-title" href="{{ url_for('shelf', shelf_id=shelf.id) }}">{{ shelf.name }}</a></h4>
-    <p>{{ shelf.description }}</p>
+        <h4><a class="article-title" href="{{ url_for('shelf', shelf_id=shelf.id) }}">{{ shelf.name }}</a></h4>
+        <p>{{ shelf.description }}</p>
+        <br></br>
 
     {% endfor %}
     <div class="row justify-content-center">

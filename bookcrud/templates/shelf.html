@@ -2,9 +2,8 @@
 {% block content %}
     <h2>{{ shelf.name }}</h2>
     <p>{{ shelf.description }}</p>
-    <div class="row justify-content-center">
+    <div>
         <div class="col-6">
-            <h2>Create Shelf</h2>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
@@ -14,21 +13,20 @@
                 {% if form.book.errors %}
                     {{ form.book(class="is_invalid") }}
                         {% for error in form.book.errors %}
-                         <span class="form-text text-danger">{{ error }}</span>
+                            <span class="form-text text-danger">{{ error }}</span>
                         {% endfor %}
                 {% else %}
                     {{ form.book(class="form-control") }}
                 {% endif %}
             </div>
-            <br></br>
             <div>
                 {{ form.submit(class="btn btn-dark") }}
             </div>
         </form>
 
-        {% for shelf in shelves %}
+        {% for book in shelved_books %}
 
-        <p>Name: {{ shelf.name }} Desc: {{ shelf.description }}</p>
+            <p>{{ book }}</p>
     
         {% endfor %}
     </div>

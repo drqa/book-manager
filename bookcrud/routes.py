@@ -94,7 +94,16 @@ def shelf(shelf_id):
                 to_shelf = BooksOnShelf(book_id = book.id, shelf_id = shelf.id)
                 db.session.add(to_shelf)
                 db.session.commit()
-    return render_template('shelf.html', title=shelf.name, shelf=shelf, form = form)
+    # this is bad bad bad, you should make it better
+    books_on_shelf = BooksOnShelf.query.all()
+    shelved_books = []
+    for book in books_on_shelf:
+        if book.shelf_id == shelf.id:
+            found_books = Book.query.all()
+            for found_book in found_books:
+                if found_book.id == book.book_id:
+                    shelved_books.append(found_book.title)
+    return render_template('shelf.html', title=shelf.name, shelf=shelf, shelved_books = shelved_books, form = form)
 
 
 
