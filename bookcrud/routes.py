@@ -1,8 +1,8 @@
-from flask import render_template, url_for, flash, redirect, abort
+from flask import render_template, url_for, flash, redirect, abort, request
 from flask.templating import render_template_string
 from flask_bcrypt import Bcrypt, generate_password_hash
 from flask_login.utils import login_required, logout_user
-from bookcrud.forms import RegistrationForm,LoginForm, BookForm, ShelfCreateForm, ShelfAddForm
+from bookcrud.forms import RegistrationForm,LoginForm, BookForm, ShelfCreateForm, ShelfAddForm, SearchForm
 from bookcrud import app, db, bcrypt
 from bookcrud.models import Book, User, Shelf, BooksOnShelf
 from flask_login import login_user, current_user
@@ -14,7 +14,7 @@ def home():
         return redirect(url_for('login'))
     current = current_user.id
     shelves = Shelf.query.filter_by(user_id=current)
-    return render_template('index.html', isIndex = True, shelves=shelves) 
+    return render_template('home.html', isIndex = True, shelves=shelves) 
 
 @app.route("/about")
 def about():
@@ -103,7 +103,17 @@ def shelf(shelf_id):
             for found_book in found_books:
                 if found_book.id == book.book_id:
                     shelved_books.append(found_book.title)
-    return render_template('shelf.html', title=shelf.name, shelf=shelf, shelved_books = shelved_books, form = form)
+    return render_template('shelf.html', title=shelf.name, shelf=shelf, shelved_books = shelved_books, books_on_shelf = books_on_shelf, form = form)
 
+# Attempt at a seach bar for books, work in progress
+# @app.route('/book_list', methods=['GET', 'POST'])
+# @login_required
+# def book_list():
+#     q =  request.args.get('q')
 
+#     if q:
+#         books = Book.query.filter(Book.title.contains(q))
+#     else:
+#         books = Book.query.all()
+#     return render_template('index.html', books = books)
 

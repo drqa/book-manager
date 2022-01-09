@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Hello {{current_user.username}}</h2>
+
+    <br></br>
+
+    {% for shelf in shelves %}
+
+        <h4><a class="article-title" href="{{ url_for('shelf', shelf_id=shelf.id) }}">{{ shelf.name }}</a></h4>
+        <p>{{ shelf.description }}</p>
+        <br></br>
+
+    {% endfor %}
+    
+    <!-- Attempt at a search bar, work in progress
+    <form class="form-inline my-2 my-lg-0
+    method="GET>
+        <input class="form-control mr-sm-2"
+        type="search" placeholder="Search" name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    {% for book in books %}
+        <p> book.title </p>
+
+    {% endfor %}
+    -->
+
+{% endblock content %}
+

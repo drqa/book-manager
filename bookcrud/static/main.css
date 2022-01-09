@@ -1,5 +1,6 @@
 body{
     font-family: "Roboto Mono", monospace !important;
+    margin-top: 5rem;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
@@ -7,3 +8,18 @@ body{
     outline: None !important;
 }
 
+.bg-steel {
+    background-color: #000000;
+  }
+
+.site-header .navbar-nav .nav-link {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+  }
+  
+  .site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }

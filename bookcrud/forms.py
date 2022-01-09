@@ -48,6 +48,11 @@ class ShelfAddForm(FlaskForm):
     book = StringField('Book Title', validators=[DataRequired()])
     submit = SubmitField('Add Book')
 
+class SearchForm(FlaskForm):
+  search = StringField('search', [DataRequired()])
+  submit = SubmitField('Search',
+                       render_kw={'class': 'btn btn-success btn-block'})
+
 
 
     

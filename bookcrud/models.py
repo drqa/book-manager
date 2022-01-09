@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 class Book(db.Model):
+    __searchable__ = ['title']
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(), unique=False, nullable=False)
     author = db.Column(db.String(), unique=False, nullable=False)
