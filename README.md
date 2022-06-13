@@ -4,7 +4,7 @@ Users can create an account to get started:
 ![flasksite3](https://user-images.githubusercontent.com/77579481/148961563-0c4219e2-7b00-4d1d-88c2-f905c103aaff.png)
 
 Once logged in users can create Shelves. Shelves are how the app manages reading lists or categorizing books in general.
-Users can also add books to thier library.
+Users can also add books to their library.
 ![flasksite5](https://user-images.githubusercontent.com/77579481/148961578-6f48f887-74de-46b3-a1b5-51a18ee174e2.png)
 
 After a book's details have been entered into the library, it can be added to a Shelf.
